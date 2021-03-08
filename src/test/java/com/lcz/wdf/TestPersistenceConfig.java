@@ -19,7 +19,7 @@ import javax.sql.DataSource;
 @MapperScan("com.lcz.wdf.dao")
 public class TestPersistenceConfig {
 
-    public static final String TEST_DB_URL = "jdbc:mysql://192.168.200.165:3306/wdf_test?useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true&autoReconnect=true&serverTimezone=Asia/Shanghai";
+    public static final String TEST_DB_URL = "jdbc:mysql://127.0.0.1:3306/wdf_test?useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true&autoReconnect=true&serverTimezone=Asia/Shanghai";
     public static final String TEST_DB_USER = "root";
     public static final String TEST_DB_PASSWORD = "";
 

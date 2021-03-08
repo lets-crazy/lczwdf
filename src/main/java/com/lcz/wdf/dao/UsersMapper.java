@@ -1,10 +1,13 @@
 package com.lcz.wdf.dao;
 
 import com.lcz.wdf.entity.Users;
+import org.apache.ibatis.annotations.Mapper;
 
 /**
+ * 用户mapper
  * @Entity com.lcz.wdf.entity.Users
  */
+@Mapper
 public interface UsersMapper {
     /**
      *

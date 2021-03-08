@@ -15,10 +15,8 @@
         <setting name="useGeneratedKeys" value="true" />
     </settings>
     <typeHandlers>
-        <typeHandler handler="com.trs.ai.ty.dao.handler.StringListTypeHandler"/>
-        <typeHandler handler="com.trs.ai.ty.dao.handler.IntegerListTypeHandler"/>
-        <typeHandler handler="com.trs.ai.ty.dao.handler.JsonTypeHandler"/>
-        <typeHandler handler="com.trs.ai.ty.dao.handler.EnumTypeHandler"/>
+        <typeHandler handler="com.lcz.wdf.dao.handler.StringListTypeHandler"/>
+        <typeHandler handler="com.lcz.wdf.dao.handler.IntegerListTypeHandler"/>
     </typeHandlers>
 
 </configuration>
