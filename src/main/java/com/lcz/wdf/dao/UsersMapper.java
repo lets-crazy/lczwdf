@@ -5,6 +5,7 @@ import org.apache.ibatis.annotations.Mapper;
 
 /**
  * 用户mapper
+ * @author li.chengzhen
  * @Entity com.lcz.wdf.entity.Users
  */
 @Mapper
