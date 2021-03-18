@@ -1,7 +1,8 @@
 package com.lcz.wdf.entity;
 
-import java.io.Serializable;
 import lombok.Data;
+
+import java.io.Serializable;
 
 /**
  * null
@@ -10,7 +11,7 @@ import lombok.Data;
 @Data
 public class Permission implements Serializable {
     /**
-     * 
+     *
      *
      * @mbg.generated 2021-03-16 14:18:21
      */

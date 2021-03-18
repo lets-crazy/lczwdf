@@ -40,8 +40,8 @@ class UsersMapperTest {
 
     @Test
     void test_selectOne(){
-        usersMapper.insert(new Users(null, "admin", "123456", "管理员"));
+        usersMapper.insert(new Users(null, "admin", "123456", "管理员", "qwer", 0));
         Users users = usersMapper.selectByPrimaryKey(1);
-        assertEquals(new Users(1, "admin", "123456", "管理员"), users);
+        assertEquals(new Users(1, "admin", "123456", "管理员", "qwer", 0), users);
     }
 }

@@ -2,6 +2,7 @@ package com.lcz.wdf.dao;
 
 import com.lcz.wdf.entity.Users;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 /**
  * 用户mapper
@@ -45,4 +46,6 @@ public interface UsersMapper {
      * @mbg.generated 2021-03-05 16:41:24
      */
     int updateByPrimaryKey(Users record);
+
+    Users selectByAccount(@Param("account") String account);
 }

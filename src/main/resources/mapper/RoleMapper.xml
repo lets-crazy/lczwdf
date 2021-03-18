@@ -1,131 +1,144 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.lcz.wdf.dao.RoleMapper">
-  <resultMap id="BaseResultMap" type="com.lcz.wdf.entity.Role">
-    <!--@mbg.generated-->
-    <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="name" jdbcType="VARCHAR" property="name" />
-    <result column="type" jdbcType="INTEGER" property="type" />
-    <result column="creator_id_number" jdbcType="VARCHAR" property="creatorIdNumber" />
-    <result column="creator_name" jdbcType="VARCHAR" property="creatorName" />
-    <result column="creator_department_id" jdbcType="VARCHAR" property="creatorDepartmentId" />
-    <result column="creator_department_name" jdbcType="VARCHAR" property="creatorDepartmentName" />
-    <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    <!--@mbg.generated-->
-    id, `name`, `type`, creator_id_number, creator_name, creator_department_id, creator_department_name, 
-    modify_time
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    <!--@mbg.generated-->
-    select 
-    <include refid="Base_Column_List" />
-    from role
-    where id = #{id,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    <!--@mbg.generated-->
-    delete from role
-    where id = #{id,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.lcz.wdf.entity.Role" useGeneratedKeys="true">
-    <!--@mbg.generated-->
-    insert into role (`name`, `type`, creator_id_number, 
-      creator_name, creator_department_id, creator_department_name, 
-      modify_time)
-    values (#{name,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}, #{creatorIdNumber,jdbcType=VARCHAR}, 
-      #{creatorName,jdbcType=VARCHAR}, #{creatorDepartmentId,jdbcType=VARCHAR}, #{creatorDepartmentName,jdbcType=VARCHAR}, 
-      #{modifyTime,jdbcType=TIMESTAMP})
-  </insert>
-  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.lcz.wdf.entity.Role" useGeneratedKeys="true">
-    <!--@mbg.generated-->
-    insert into role
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="name != null">
-        `name`,
-      </if>
-      <if test="type != null">
-        `type`,
-      </if>
-      <if test="creatorIdNumber != null">
-        creator_id_number,
-      </if>
-      <if test="creatorName != null">
-        creator_name,
-      </if>
-      <if test="creatorDepartmentId != null">
-        creator_department_id,
-      </if>
-      <if test="creatorDepartmentName != null">
-        creator_department_name,
-      </if>
-      <if test="modifyTime != null">
-        modify_time,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="name != null">
-        #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="type != null">
-        #{type,jdbcType=INTEGER},
-      </if>
-      <if test="creatorIdNumber != null">
-        #{creatorIdNumber,jdbcType=VARCHAR},
-      </if>
-      <if test="creatorName != null">
-        #{creatorName,jdbcType=VARCHAR},
-      </if>
-      <if test="creatorDepartmentId != null">
-        #{creatorDepartmentId,jdbcType=VARCHAR},
-      </if>
-      <if test="creatorDepartmentName != null">
+    <resultMap id="BaseResultMap" type="com.lcz.wdf.entity.Role">
+        <!--@mbg.generated-->
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="type" jdbcType="INTEGER" property="type"/>
+        <result column="creator_id_number" jdbcType="VARCHAR" property="creatorIdNumber"/>
+        <result column="creator_name" jdbcType="VARCHAR" property="creatorName"/>
+        <result column="creator_department_id" jdbcType="VARCHAR" property="creatorDepartmentId"/>
+        <result column="creator_department_name" jdbcType="VARCHAR" property="creatorDepartmentName"/>
+        <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@mbg.generated-->
+        id, `name`, `type`, creator_id_number, creator_name, creator_department_id, creator_department_name,
+        modify_time
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        <!--@mbg.generated-->
+        select
+        <include refid="Base_Column_List"/>
+        from role
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <select id="selectByAccount" resultType="com.lcz.wdf.entity.Role">
+        select *
+        from role
+        where id in
+        (
+        select role_id from user_role where user_id =
+            (
+            select id from users where account = #{account}
+            )
+        )
+      </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        <!--@mbg.generated-->
+        delete from role
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.lcz.wdf.entity.Role" useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into role (`name`, `type`, creator_id_number,
+        creator_name, creator_department_id, creator_department_name,
+        modify_time)
+        values (#{name,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}, #{creatorIdNumber,jdbcType=VARCHAR},
+        #{creatorName,jdbcType=VARCHAR}, #{creatorDepartmentId,jdbcType=VARCHAR},
         #{creatorDepartmentName,jdbcType=VARCHAR},
-      </if>
-      <if test="modifyTime != null">
-        #{modifyTime,jdbcType=TIMESTAMP},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.lcz.wdf.entity.Role">
-    <!--@mbg.generated-->
-    update role
-    <set>
-      <if test="name != null">
-        `name` = #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="type != null">
+        #{modifyTime,jdbcType=TIMESTAMP})
+    </insert>
+    <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.lcz.wdf.entity.Role"
+            useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into role
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="name != null">
+                `name`,
+            </if>
+            <if test="type != null">
+                `type`,
+            </if>
+            <if test="creatorIdNumber != null">
+                creator_id_number,
+            </if>
+            <if test="creatorName != null">
+                creator_name,
+            </if>
+            <if test="creatorDepartmentId != null">
+                creator_department_id,
+            </if>
+            <if test="creatorDepartmentName != null">
+                creator_department_name,
+            </if>
+            <if test="modifyTime != null">
+                modify_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="name != null">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="type != null">
+                #{type,jdbcType=INTEGER},
+            </if>
+            <if test="creatorIdNumber != null">
+                #{creatorIdNumber,jdbcType=VARCHAR},
+            </if>
+            <if test="creatorName != null">
+                #{creatorName,jdbcType=VARCHAR},
+            </if>
+            <if test="creatorDepartmentId != null">
+                #{creatorDepartmentId,jdbcType=VARCHAR},
+            </if>
+            <if test="creatorDepartmentName != null">
+                #{creatorDepartmentName,jdbcType=VARCHAR},
+            </if>
+            <if test="modifyTime != null">
+                #{modifyTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.lcz.wdf.entity.Role">
+        <!--@mbg.generated-->
+        update role
+        <set>
+            <if test="name != null">
+                `name` = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="type != null">
+                `type` = #{type,jdbcType=INTEGER},
+            </if>
+            <if test="creatorIdNumber != null">
+                creator_id_number = #{creatorIdNumber,jdbcType=VARCHAR},
+            </if>
+            <if test="creatorName != null">
+                creator_name = #{creatorName,jdbcType=VARCHAR},
+            </if>
+            <if test="creatorDepartmentId != null">
+                creator_department_id = #{creatorDepartmentId,jdbcType=VARCHAR},
+            </if>
+            <if test="creatorDepartmentName != null">
+                creator_department_name = #{creatorDepartmentName,jdbcType=VARCHAR},
+            </if>
+            <if test="modifyTime != null">
+                modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.lcz.wdf.entity.Role">
+        <!--@mbg.generated-->
+        update role
+        set `name` = #{name,jdbcType=VARCHAR},
         `type` = #{type,jdbcType=INTEGER},
-      </if>
-      <if test="creatorIdNumber != null">
         creator_id_number = #{creatorIdNumber,jdbcType=VARCHAR},
-      </if>
-      <if test="creatorName != null">
         creator_name = #{creatorName,jdbcType=VARCHAR},
-      </if>
-      <if test="creatorDepartmentId != null">
         creator_department_id = #{creatorDepartmentId,jdbcType=VARCHAR},
-      </if>
-      <if test="creatorDepartmentName != null">
         creator_department_name = #{creatorDepartmentName,jdbcType=VARCHAR},
-      </if>
-      <if test="modifyTime != null">
-        modify_time = #{modifyTime,jdbcType=TIMESTAMP},
-      </if>
-    </set>
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.lcz.wdf.entity.Role">
-    <!--@mbg.generated-->
-    update role
-    set `name` = #{name,jdbcType=VARCHAR},
-      `type` = #{type,jdbcType=INTEGER},
-      creator_id_number = #{creatorIdNumber,jdbcType=VARCHAR},
-      creator_name = #{creatorName,jdbcType=VARCHAR},
-      creator_department_id = #{creatorDepartmentId,jdbcType=VARCHAR},
-      creator_department_name = #{creatorDepartmentName,jdbcType=VARCHAR},
-      modify_time = #{modifyTime,jdbcType=TIMESTAMP}
-    where id = #{id,jdbcType=INTEGER}
-  </update>
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
 </mapper>

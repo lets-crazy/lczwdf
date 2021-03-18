@@ -19,7 +19,12 @@
     from users
     where id = #{id,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <select id="selectByAccount" resultType="com.lcz.wdf.entity.Users">
+      select *
+      from users
+      where account = #{account}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     <!--@mbg.generated-->
     delete from users
     where id = #{id,jdbcType=INTEGER}

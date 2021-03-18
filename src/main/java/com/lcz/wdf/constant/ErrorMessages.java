@@ -1,4 +1,4 @@
-package com.trs.ai.ty.constant;
+package com.lcz.wdf.constant;
 
 /**
  * @author xholee

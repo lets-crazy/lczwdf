@@ -1,4 +1,4 @@
-package com.lcz.wdf.dao.exception;
+package com.lcz.wdf.entity.exception;
 
 /**
  * 用于处理各种业务时的运行时异常

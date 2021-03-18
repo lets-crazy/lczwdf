@@ -1,4 +1,4 @@
-package com.lcz.wdf.dao.exception;
+package com.lcz.wdf.entity.exception;
 
 /**
  * Created by wangxuan on 2017/5/10.

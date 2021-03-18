@@ -1,4 +1,4 @@
-package com.lcz.wdf.shiro;
+package com.lcz.wdf.config;
 
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
@@ -6,7 +6,6 @@ import org.apache.shiro.authc.ExcessiveAttemptsException;
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.cache.Cache;
 import org.apache.shiro.cache.CacheManager;
-import org.springframework.stereotype.Component;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -17,10 +16,9 @@ import java.util.concurrent.atomic.AtomicInteger;
  * @version 1.0
  * @date 2021/3/16 9:46
  */
-@Component
 public class RetryLimitHashedCredentialsMatcher extends HashedCredentialsMatcher {
-    // 声明一个缓存接口，这个接口是Shiro缓存管理的一部分，它的具体实现可以通过外部容器注入
-    private Cache<String, AtomicInteger> passwordRetryCache;
+    /** 声明一个缓存接口，这个接口是Shiro缓存管理的一部分，它的具体实现可以通过外部容器注入 */
+    private final Cache<String, AtomicInteger> passwordRetryCache;
 
     public RetryLimitHashedCredentialsMatcher(CacheManager cacheManager) {
         passwordRetryCache = cacheManager.getCache("passwordRetryCache");

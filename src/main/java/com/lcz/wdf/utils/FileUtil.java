@@ -1,6 +1,6 @@
 package com.lcz.wdf.utils;
 
-import com.lcz.wdf.dao.exception.BizException;
+import com.lcz.wdf.entity.exception.BizException;
 import org.apache.commons.compress.archivers.zip.ZipArchiveEntry;
 import org.apache.commons.compress.archivers.zip.ZipArchiveInputStream;
 import org.apache.commons.compress.archivers.zip.ZipArchiveOutputStream;

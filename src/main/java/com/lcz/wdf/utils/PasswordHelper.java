@@ -1,4 +1,4 @@
-package com.lcz.wdf.shiro;
+package com.lcz.wdf.utils;
 
 import com.lcz.wdf.entity.Users;
 import org.apache.shiro.crypto.RandomNumberGenerator;
@@ -16,7 +16,7 @@ import org.apache.shiro.util.ByteSource;
 public class PasswordHelper {
     private RandomNumberGenerator randomNumberGenerator = new SecureRandomNumberGenerator();
     private String algorithmName = "md5";
-    private final int hashIterations = 2;
+    private final int hashIterations = 1;
 
     public void encryptPassword(Users user) {
         // User对象包含最基本的字段Username和Password

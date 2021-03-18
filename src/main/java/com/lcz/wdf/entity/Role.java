@@ -1,8 +1,9 @@
 package com.lcz.wdf.entity;
 
+import lombok.Data;
+
 import java.io.Serializable;
 import java.util.Date;
-import lombok.Data;
 
 /**
  * null
@@ -11,14 +12,14 @@ import lombok.Data;
 @Data
 public class Role implements Serializable {
     /**
-     * 
+     *
      *
      * @mbg.generated 2021-03-16 10:57:53
      */
     private Integer id;
 
     /**
-     * 
+     *
      *
      * @mbg.generated 2021-03-16 10:57:53
      */

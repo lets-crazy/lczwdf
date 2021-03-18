@@ -1,4 +1,4 @@
-package com.lcz.wdf.shiro;
+package com.lcz.wdf.config;
 
 import com.lcz.wdf.entity.Permission;
 import com.lcz.wdf.entity.Role;
@@ -65,4 +65,6 @@ public class UserRealm extends AuthorizingRealm {
                 ByteSource.Util.bytes(user.getSalt()),
                 getName());
     }
+
+
 }

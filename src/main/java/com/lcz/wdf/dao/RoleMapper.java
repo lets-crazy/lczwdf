@@ -1,10 +1,15 @@
 package com.lcz.wdf.dao;
 
 import com.lcz.wdf.entity.Role;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.Set;
 
 /**
  * @Entity com.lcz.wdf.entity.Role
  */
+@Mapper
 public interface RoleMapper {
     /**
      *
@@ -41,4 +46,6 @@ public interface RoleMapper {
      * @mbg.generated 2021-03-16 10:57:53
      */
     int updateByPrimaryKey(Role record);
+
+    Set<Role> selectByAccount(@Param("account") String account);
 }

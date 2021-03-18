@@ -18,7 +18,17 @@
     from permission
     where id = #{id,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <select id="selectByAccount" resultType="com.lcz.wdf.entity.Permission">
+      select *
+      from permission
+      where role_id
+      in (
+      select role_id from user_role where user_id = (
+      select id from users where account = #{account}
+      )
+      )
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     <!--@mbg.generated-->
     delete from permission
     where id = #{id,jdbcType=INTEGER}

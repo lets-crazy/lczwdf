@@ -36,4 +36,10 @@ public class Users {
      * @mbg.generated 2021-03-05 16:41:24
      */
     private String name;
+
+    /** 盐 */
+    private String salt;
+
+    /** 是否被锁定 1：是； 0：否 */
+    private Integer isLocked;
 }
