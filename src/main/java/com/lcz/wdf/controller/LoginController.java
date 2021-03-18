@@ -1,6 +1,8 @@
 package com.lcz.wdf.controller;
 
+import com.lcz.wdf.constant.ErrorMessages;
 import com.lcz.wdf.entity.Users;
+import com.lcz.wdf.entity.common.ResponseMessage;
 import com.lcz.wdf.entity.exception.BizException;
 import com.lcz.wdf.entity.request.UserLoginRequest;
 import com.lcz.wdf.service.UserService;
@@ -12,10 +14,9 @@ import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
+import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -111,6 +112,18 @@ public class LoginController {
             xFor = request.getRemoteAddr();
         }
         return xFor;
+    }
+    /**
+     * 无权限时重定向登陆，返回401和错误信息
+     *
+     * @return void
+     * @author lianglu
+     * @since 2020/10/19 20:42
+     */
+    @ResponseStatus(HttpStatus.UNAUTHORIZED)
+    @GetMapping("/unauthorized")
+    public ResponseMessage unauthorized() {
+        return ResponseMessage.errorWithStatus(401, ErrorMessages.UNAUTHORIZED_ROLE);
     }
 }
 

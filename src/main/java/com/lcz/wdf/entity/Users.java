@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
 /** 用户 @TableName users */
 @Data
 @NoArgsConstructor
@@ -42,4 +44,6 @@ public class Users {
 
     /** 是否被锁定 1：是； 0：否 */
     private Integer isLocked;
+
+    private LocalDateTime updateTime;
 }

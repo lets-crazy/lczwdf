@@ -27,7 +27,7 @@ class UserServiceImplMockTest {
     @Test
     void test_getIndex() {
         Mockito.when(usersMapper.selectByPrimaryKey(1))
-                .thenReturn(new Users(1, "123", "123456", "张三", "qwer", 0));
+                .thenReturn(new Users(1, "123", "123456", "张三", "qwer", 0,null));
         String except = "Users(id=1, account=123, password=123456, name=张三, salt=qwer, isLocked=0)";
         String actual = userService.getIndex();
         Assertions.assertEquals(except, actual);

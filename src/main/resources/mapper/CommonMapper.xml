@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lcz.wdf.dao.CommonMapper">
+
+    <select id="getAllDataByTableName" resultType="java.util.Map">
+        select *
+        from `${tableName}`
+    </select>
+
+    <select id="selectColumnAndTypeByTableName" resultType="com.alibaba.fastjson.JSONObject">
+        select
+        DISTINCT
+        COLUMN_NAME,
+        DATA_TYPE
+        from information_schema.COLUMNS
+        where table_name = '${tableName}'
+    </select>
+</mapper>
