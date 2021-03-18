@@ -86,7 +86,7 @@ public class ShiroConfig {
         // 登出
         map.put("/login", "anon");
         map.put("/auth/code", "anon");
-        map.put("/mq/**", "anon");
+        map.put("/user/register", "anon");
         map.put("/error", "anon");
         map.put("/logout", "anon");
         // 对所有用户认证

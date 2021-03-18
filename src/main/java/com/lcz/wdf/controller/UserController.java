@@ -1,11 +1,12 @@
 package com.lcz.wdf.controller;
 
+import com.lcz.wdf.entity.exception.BizException;
+import com.lcz.wdf.entity.request.AddUserRequest;
 import com.lcz.wdf.service.UserService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.validation.Valid;
 
 /**
  * 用户控制层
@@ -23,5 +24,10 @@ public class UserController {
     @GetMapping("/index")
     public String sayHello(){
         return userService.getIndex();
+    }
+
+    @PostMapping("/register")
+    public String addUser(@Valid @RequestBody AddUserRequest request) throws BizException {
+        return userService.addUser(request);
     }
 }

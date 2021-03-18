@@ -14,11 +14,11 @@ import org.apache.shiro.util.ByteSource;
  * @date 2021/3/16 9:39
  **/
 public class PasswordHelper {
-    private RandomNumberGenerator randomNumberGenerator = new SecureRandomNumberGenerator();
-    private String algorithmName = "md5";
-    private final int hashIterations = 1;
+    private static RandomNumberGenerator randomNumberGenerator = new SecureRandomNumberGenerator();
+    private static String algorithmName = "MD5";
+    private static final int hashIterations = 5;
 
-    public void encryptPassword(Users user) {
+    public static void encryptPassword(Users user) {
         // User对象包含最基本的字段Username和Password
         user.setSalt(randomNumberGenerator.nextBytes().toHex());
         // 将用户的注册密码经过散列算法替换成一个不可逆的新密码保存进数据，散列过程使用了盐

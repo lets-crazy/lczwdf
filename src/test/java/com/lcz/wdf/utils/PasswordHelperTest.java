@@ -37,8 +37,8 @@ public class PasswordHelperTest {
     @Test
     @DisplayName("生成密码")
     void newPassword(){
-        String s = new SimpleHash(algorithmName, "123456",
-                ByteSource.Util.bytes("123321"), hashIterations).toHex();
+        String s = new SimpleHash(algorithmName, "1234",
+                ByteSource.Util.bytes("373f647f075100720438ebab3d5dccb8"), hashIterations).toHex();
         System.err.println(s);
     }
 }

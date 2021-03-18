@@ -31,9 +31,9 @@
   </delete>
   <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.lcz.wdf.entity.Users" useGeneratedKeys="true">
     <!--@mbg.generated-->
-    insert into users (account, `password`, `name`
+    insert into users (account, `password`, `name`, `salt`, `is_locked`
       )
-    values (#{account,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}
+    values (#{account,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{salt,jdbcType=VARCHAR}, #{isLocked,jdbcType=INTEGER}
       )
   </insert>
   <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.lcz.wdf.entity.Users" useGeneratedKeys="true">
