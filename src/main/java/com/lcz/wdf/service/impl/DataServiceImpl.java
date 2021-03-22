@@ -107,7 +107,7 @@ public class DataServiceImpl implements DataService {
     }
 
     @Override
-    public void addData(List<Map<String, Object>> data, String tableName, List<String> keyList) {
-            commonMapper.insertCommon();
+    public void addData(List<List<Object>> data, String tableName, List<String> keyList) {
+            commonMapper.insertCommon(data, keyList, tableName);
     }
 }

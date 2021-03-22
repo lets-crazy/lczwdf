@@ -5,7 +5,6 @@ import com.alibaba.excel.event.AnalysisEventListener;
 import com.alibaba.fastjson.JSON;
 import com.lcz.wdf.service.DataService;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
 
 import java.util.*;
 
@@ -34,7 +33,7 @@ public class NoModelDataListener extends AnalysisEventListener<Map<Integer, Stri
 
     List<Map<Integer, String>> results = new ArrayList<>();
 
-    List<List<Object>> datas = new ArrayList<>();
+    List<List<Object>> data = new ArrayList<>();
 
     /**
      * 存储Key
@@ -75,17 +74,11 @@ public class NoModelDataListener extends AnalysisEventListener<Map<Integer, Stri
             results.forEach(
                     m -> {
                         List<String> values = new ArrayList<>(m.values());
-                        datas.add(values);
+                        this.data.add(Collections.singletonList(values));
                     });
             saveData();
             results.clear();
         }
-
-        data.forEach(
-                m -> {
-                    List<String> values = new ArrayList<>(m.values());
-                    readResult.add(values);
-                });
 
         /*HashMap<String, Object> objectObjectHashMap = new HashMap<>(16);
         Set<Integer> integerSet = data.keySet();
@@ -135,11 +128,11 @@ public class NoModelDataListener extends AnalysisEventListener<Map<Integer, Stri
         log.info("存储数据库成功！");
     }
 
-    public List<Map<Integer, String>> getDatas() {
+    public List<Map<Integer, String>> getData() {
         return null;
     }
 
-    public void setDatas(List<Map<Integer, String>> datas) {
+    public void setData(List<Map<Integer, String>> data) {
         //this.list = datas;
     }
 

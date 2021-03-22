@@ -19,4 +19,6 @@ public interface CommonMapper {
     List<Map<Object, Object>> getAllDataByTableName(@Param("tableName") String tableName);
 
     List<JSONObject> selectColumnAndTypeByTableName(@Param("tableName") String tableName);
+
+    void insertCommon(@Param("resultList") List<List<Object>> resultList,@Param("titles") List<String> titles, @Param("tableName") String tableName);
 }
